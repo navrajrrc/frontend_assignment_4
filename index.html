@@ -1,78 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Survey Form</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Survey Form</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <form action="https://httpbin.org/post" method="post">
-        <fieldset>
-            <legend>Basic Information</legend>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <span class="error" id="name-error"></span>
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <span class="error" id="email-error"></span>
-        </fieldset>
-        
-        <fieldset>
-            <legend>Survey Questions</legend>
-            <p>What is your favorite season?</p>
-            <input type="radio" id="spring" name="season" value="Spring">
-            <label for="spring">Spring</label>
-            <input type="radio" id="summer" name="season" value="Summer">
-            <label for="summer">Summer</label>
-            <input type="radio" id="autumn" name="season" value="Autumn">
-            <label for="autumn">Autumn</label>
-            <input type="radio" id="winter" name="season" value="Winter">
-            <label for="winter">Winter</label>
-            <span class="error" id="season-error"></span>
-            
-            <p>Select your hobbies:</p>
-            <input type="checkbox" id="reading" name="hobbies" value="Reading">
-            <label for="reading">Reading</label>
-            <input type="checkbox" id="sports" name="hobbies" value="Sports">
-            <label for="sports">Sports</label>
-            <input type="checkbox" id="music" name="hobbies" value="Music">
-            <label for="music">Music</label>
-            <span class="error" id="hobbies-error"></span>
-        </fieldset>
-        
-        <fieldset>
-            <legend>Additional Information</legend>
-            <label for="category">Choose a category:</label>
-            <select id="category" name="category">
-                <option value="" selected disabled>--Select--</option>
-                <option value="student">Student</option>
-                <option value="professional">Professional</option>
-                <option value="other">Other</option>
-            </select>
-            <span class="error" id="category-error"></span>
-            
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" pattern="^[a-zA-Z0-9]+$" required>
-            <span class="error" id="username-error"></span>
-            
-            <label for="dob">Date of Birth (DD-MM-YYYY):</label>
-            <input type="text" id="dob" name="dob" pattern="\d{2}-\d{2}-\d{4}" required>
-            <span class="error" id="dob-error"></span>
-            
-            <label for="custom-code">Custom Code (ABC-1234):</label>
-            <input type="text" id="custom-code" name="custom-code" pattern="^[A-Z]{3}-\d{4}$" required>
-            <span class="error" id="custom-code-error"></span>
-            
-            <label for="experience">Years of Experience:</label>
-            <input type="number" id="experience" name="experience" min="0" max="50">
-            <span class="error" id="experience-error"></span>
-            
-            <label for="comments">Additional Comments:</label>
-            <textarea id="comments" name="comments" rows="4"></textarea>
-        </fieldset>
-        
-        <button type="submit">Submit</button>
+  <div class="form-container">
+    <h1>Interactive Survey</h1>
+    <form id="surveyForm">
+      <div class="input-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <span class="error-message" id="nameError"></span>
+      </div>
+
+      <div class="input-group">
+        <label>Gender:</label>
+        <label for="male"><input type="radio" id="male" name="gender" value="Male"> Male</label>
+        <label for="female"><input type="radio" id="female" name="gender" value="Female"> Female</label>
+        <span class="error-message" id="genderError"></span>
+      </div>
+
+      <div class="input-group">
+        <label for="hobbies">Hobbies (select at least one):</label>
+        <label for="reading"><input type="checkbox" id="reading" name="hobbies" value="Reading"> Reading</label>
+        <label for="traveling"><input type="checkbox" id="traveling" name="hobbies" value="Traveling"> Traveling</label>
+        <label for="coding"><input type="checkbox" id="coding" name="hobbies" value="Coding"> Coding</label>
+        <span class="error-message" id="hobbiesError"></span>
+      </div>
+
+      <div class="input-group">
+        <label for="username">Username (alphanumeric only):</label>
+        <input type="text" id="username" name="username" pattern="^[a-zA-Z0-9]+$" required>
+        <span class="error-message" id="usernameError"></span>
+      </div>
+
+      <div class="input-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <span class="error-message" id="emailError"></span>
+      </div>
+
+      <div class="input-group">
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+        <span class="error-message" id="dobError"></span>
+      </div>
+
+      <div class="input-group">
+        <label for="country">Country:</label>
+        <select id="country" name="country" required>
+          <option value="">Select your country</option>
+          <option value="US">United States</option>
+          <option value="CA">Canada</option>
+          <option value="IN">India</option>
+        </select>
+        <span class="error-message" id="countryError"></span>
+      </div>
+
+      <button type="submit">Submit</button>
     </form>
+    <div id="successMessage" class="hidden">
+      <p>Form Submitted Successfully!</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
